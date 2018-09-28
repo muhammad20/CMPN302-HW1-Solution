@@ -2,7 +2,7 @@
 solution of HW1 of Algorithms Design and Analysis course.
 
 ## steps to run
-1 - make sure `python2` is installed in your system.
+1 - make sure `python2` is installed in your system. <br>
 2 - install `dart` SDK https://www.dartlang.org/tools/sdk
 3 - add the path to the SDK to your `PATH` variable.
 3 - run `python runscript.py <data_count> <output_filename>` will output to `filename` random numbers of count `data_count`.
