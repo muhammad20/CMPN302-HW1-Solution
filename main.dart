@@ -35,9 +35,11 @@ void main(List<String> args) async {
   String inputFilename = args[1];
   List<int> data = await FileHandler.readInputData(inputFilename);
 
+  if(data == null) exit(3);
+
   if (data.length < 2) {
     print('error! file only contains 1 element, no need to sort!\n');
-    exit(3);
+    exit(4);
   }
 
   String sortedDataFilename = args[2];

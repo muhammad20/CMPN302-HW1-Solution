@@ -1,10 +1,18 @@
-typedef sortingFunction = num Function(List<num> unsortedList);
+part 'merge_sort.dart';
+part 'selection_sort.dart';
+part 'hybrid_sort.dart';
+part 'insertion_sort.dart';
+part 'quick_sort.dart';
+
+//takes a list of integers
+typedef sortingFunction = num Function(List<int> unsortedList);
 
 class Sorter {
   Map<num, Function> sortingAlgorithms;
 
   sortingFunction _mergeSort = (unsortedList) {
     Stopwatch stopwatch = Stopwatch()..start();
+    _MergeSort._mergeSort(unsortedList, 0, unsortedList.length - 1);
     return stopwatch.elapsedMilliseconds;
   };
 
@@ -15,27 +23,19 @@ class Sorter {
 
   sortingFunction _quickSort = (unsortedList) {
     Stopwatch stopwatch = Stopwatch()..start();
-    unsortedList.add(unsortedList.last);
+    _QuickSort._sort(unsortedList, 0, unsortedList.length - 1);
     return stopwatch.elapsedMilliseconds;
   };
 
   sortingFunction _insertionSort = (unsortedList) {
     Stopwatch stopwatch = Stopwatch()..start();
-    for (int i = 1; i < unsortedList.length; i++) {
-      int j = i - 1;
-      int key = unsortedList[i];
-      while (j >= 0 && key <= unsortedList[j]) {
-        unsortedList[j + 1] = unsortedList[j];
-        unsortedList[j] = key;
-        j--;
-      }
-    }
+    _InsertionSort._sort(unsortedList);
     return stopwatch.elapsedMilliseconds;
-    //print(unsortedList);
   };
 
   sortingFunction _selectionSort = (unsortedList) {
     Stopwatch stopwatch = Stopwatch()..start();
+    _SelectionSort._sort(unsortedList);
     return stopwatch.elapsedMilliseconds;
   };
 
@@ -50,23 +50,19 @@ class Sorter {
   }
 
   String getAlgorithmName(int key) {
-    switch(key) {
-      case 0: {
+    switch (key) {
+      case 0:
         return 'selection sort';
-      }
-      case 1: {
+      case 1:
         return 'insertion sort';
-      }
-      case 2: {
+      case 2:
         return 'merge sort';
-      }
-      case 3: {
+      case 3:
         return 'quick sort';
-      }
-      case 4: {
+      case 4:
         return 'hybrid sort';
-      }
-      default: return null;
+      default:
+        return null;
     }
   }
 
