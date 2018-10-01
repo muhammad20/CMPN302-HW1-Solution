@@ -7,7 +7,7 @@ solution of HW1 of Algorithms Design and Analysis course.
 3 - add the path to the SDK to your `PATH` variable. <br>
 3 - run `python runscript.py <data_count> <output_filename>` will output to `filename` random numbers of count `data_count`. <br>
 4 - algorithm codes: <br>
-    0: selection sort <br>
+emsp;0: selection sort <br>
     1: insertion sort <br>
     2: merge sort <br>
     3: quick sort <br>
