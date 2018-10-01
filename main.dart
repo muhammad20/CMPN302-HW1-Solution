@@ -35,7 +35,7 @@ void main(List<String> args) async {
   String inputFilename = args[1];
   List<int> data = await FileHandler.readInputData(inputFilename);
 
-  if(data == null) exit(3);
+  if (data == null) exit(3);
 
   if (data.length < 2) {
     print('error! file only contains 1 element, no need to sort!\n');
@@ -48,14 +48,28 @@ void main(List<String> args) async {
 
   int executionTime = sorter.sortingAlgorithms[algorithmCode](data);
 
-  print('execution time in milliseconds: ${executionTime}');
+  print('unsorted sorting time in milliseconds: ${executionTime}');
 
   FileHandler.writeDataToFile(data, sortedDataFilename);
 
   String algorithmExecutionTimeFilename = args[3];
 
   FileHandler.writeDataToFile(
-      '${data.length} elements sorted '
-      'in: ${executionTime} milliseconds.\n',
-      algorithmExecutionTimeFilename);
+      data.length.toString() + "\n" + executionTime.toString(),
+      sorter.getAlgorithmName(algorithmCode).replaceFirst(" ", '') +
+          "_time.txt",
+      mode: FileMode.append);
+
+  await FileHandler.writeDataToFile('${data.length}_unsorted: ${executionTime}',
+      algorithmExecutionTimeFilename,
+      mode: FileMode.append);
+
+  executionTime = sorter.sortingAlgorithms[algorithmCode](data);
+  print('sorted sorting time in milliseconds: ${executionTime}');
+
+  FileHandler.writeDataToFile(
+      '${data.length}_sorted: '
+      '${executionTime}',
+      algorithmExecutionTimeFilename,
+      mode: FileMode.append);
 }

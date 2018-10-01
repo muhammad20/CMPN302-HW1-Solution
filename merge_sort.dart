@@ -1,7 +1,7 @@
 part of 'sorter.dart';
 
 /// have a static function for `MergeSort` to be called by Sorter
-/// in [_mergeSort] `sortingAlgorithm` function in `Sorter` class.
+/// in [_sort] `sortingAlgorithm` function in `Sorter` class.
 class _MergeSort {
   static void _merge(List<int> unsortedList, int left, int mid, int right) {
     //left and right lists lengths
@@ -45,12 +45,12 @@ class _MergeSort {
     }
   }
 
-  static void _mergeSort(List<int> unsortedList, int start, int end) {
+  static void _sort(List<int> unsortedList, int start, int end) {
     if (start >= end) return;
     num mid_double = (start + end) / 2;
     int mid = mid_double.floor();
-    _mergeSort(unsortedList, start, mid);
-    _mergeSort(unsortedList, mid + 1, end);
+    _sort(unsortedList, start, mid);
+    _sort(unsortedList, mid + 1, end);
     _merge(unsortedList, start, mid, end);
   }
 }

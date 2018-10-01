@@ -29,7 +29,7 @@ class FileHandler {
 
   /// writes all values in [data] each value in a separate line
   /// to a file with [filename].
-  static void writeDataToFile(dynamic data, String filename, {FileMode mode}) {
+  static void writeDataToFile(dynamic data, String filename, {FileMode mode, bool isAlreadySorted}) async {
     var file = File(filename);
     var sink = file.openWrite(mode: mode ?? FileMode.write);
     if (data is List) {
@@ -40,8 +40,8 @@ class FileHandler {
     }
     else if (data is String) {
       sink.write(data);
-      sink.write('\n');
+      await sink.write('\n');
     }
-    sink.close();
+    await sink.close();
   }
 }

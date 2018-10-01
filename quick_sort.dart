@@ -24,7 +24,7 @@ class _QuickSort {
   static void _sort(List<int> unsortedList, int left, int pivot) {
     if(left < pivot) {
       int wall = _partition(unsortedList, left, pivot);
-      _sort(unsortedList, left, wall -1);
+      _sort(unsortedList, left, wall - 1);
       _sort(unsortedList, wall + 1, pivot);
     }
   }

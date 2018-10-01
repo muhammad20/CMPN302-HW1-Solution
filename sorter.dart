@@ -4,20 +4,22 @@ part 'hybrid_sort.dart';
 part 'insertion_sort.dart';
 part 'quick_sort.dart';
 
-//takes a list of integers
+///takes a list of `int`, should return the number of
+///milliseconds taken to execute the algorithm.
 typedef sortingFunction = num Function(List<int> unsortedList);
 
 class Sorter {
-  Map<num, Function> sortingAlgorithms;
+  Map<int, Function> sortingAlgorithms;
 
   sortingFunction _mergeSort = (unsortedList) {
     Stopwatch stopwatch = Stopwatch()..start();
-    _MergeSort._mergeSort(unsortedList, 0, unsortedList.length - 1);
+    _MergeSort._sort(unsortedList, 0, unsortedList.length - 1);
     return stopwatch.elapsedMilliseconds;
   };
 
   sortingFunction _hybridSort = (unsortedList) {
     Stopwatch stopwatch = Stopwatch()..start();
+    _HybridSort._sort(unsortedList);
     return stopwatch.elapsedMilliseconds;
   };
 
@@ -40,7 +42,7 @@ class Sorter {
   };
 
   Sorter() {
-    sortingAlgorithms = <num, Function>{
+    sortingAlgorithms = <int, Function>{
       2: _mergeSort,
       3: _quickSort,
       1: _insertionSort,
